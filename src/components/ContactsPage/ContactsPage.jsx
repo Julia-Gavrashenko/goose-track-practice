@@ -16,6 +16,8 @@ import {
   FormTitle,
 } from './ContactsPage.styled';
 
+
+
 export const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -27,11 +29,13 @@ export const ContactsPage = () => {
   }, [dispatch]);
 
   return (
+    <>
     <ContactsLayout>
       <FormTitle>Phonebook</FormTitle>
       <ContactForm />
       <ContactListTitle>Contacts</ContactListTitle>
-      <ContactFilter />
+        <ContactFilter />
+         
 
       {isLoading && !error && (
         <ThreeDots
@@ -47,5 +51,7 @@ export const ContactsPage = () => {
       )}
       {contacts.length > 0 && <ContactList />}
     </ContactsLayout>
+    
+      </>
   );
 };
