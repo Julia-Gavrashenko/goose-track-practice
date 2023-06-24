@@ -2,13 +2,14 @@ import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
 const FeedbackRating = () => {
-  const [rating, setRating] = useState(3);
+  const [feedbackRating, setFeedbackRating] = useState(0);
   const [ratingHover, setRatingHover] = useState(null);
 
   return (
     <>
       {[...Array(5)].map((star, ind) => {
-        const RatingValue = ind + 1;
+        const ratingValue = ind + 1;
+    
 
         return (
           <>
@@ -16,8 +17,8 @@ const FeedbackRating = () => {
               key={ind}
               type="radio"
               name="rating"
-              value={RatingValue}
-              onClick={() => setRating(RatingValue)}
+              value={ratingValue}
+              onClick={() => setFeedbackRating(ratingValue)}
               style={{
                 display: 'none',
               }}
@@ -25,9 +26,9 @@ const FeedbackRating = () => {
             <FaStar
               size={24}
               color={
-                RatingValue <= (ratingHover || rating) ? '#FFAC33' : '#CEC9C1'
+                ratingValue <= (ratingHover || feedbackRating) ? '#FFAC33' : '#CEC9C1'
               }
-              onMouseEnter={() => setRatingHover(RatingValue)}
+              onMouseEnter={() => setRatingHover(ratingValue)}
               onMouseLeave={() => setRatingHover(null)}
               style={{
                 marginRight: 0,
